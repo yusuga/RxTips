@@ -22,6 +22,15 @@ extension APIServiceType {
   
   func requestObject() -> Single<UserModel> {
     return request()
-      .map { UserModel(id: UUID().uuidString, snakeCaseKey: 1) }
+      .map {
+        UserModel(
+          id: UUID().uuidString,
+          snakeCaseKey: 1,
+          address: AddressModel(
+            id: UUID().uuidString,
+            addressNum: 1
+          )
+        )
+    }
   }
 }

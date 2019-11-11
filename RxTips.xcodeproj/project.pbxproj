@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A69E849E8E9BB92E5422887E /* Pods_RxTips.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90A9C3C7D9A2F92D5F393EB2 /* Pods_RxTips.framework */; };
+		B83E5F3C2379482B00A2A1F6 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83E5F3B2379482B00A2A1F6 /* Address.swift */; };
 		B89A23B4237301A500F7A364 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89A23B3237301A500F7A364 /* AppDelegate.swift */; };
 		B89A23B9237301A500F7A364 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B89A23B7237301A500F7A364 /* Main.storyboard */; };
 		B89A23BB237301A600F7A364 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B89A23BA237301A600F7A364 /* Assets.xcassets */; };
@@ -37,6 +38,7 @@
 		2E6920B072BE942C89B43C33 /* Pods-RxTips.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxTips.release.xcconfig"; path = "Target Support Files/Pods-RxTips/Pods-RxTips.release.xcconfig"; sourceTree = "<group>"; };
 		453B05066D1AC653988FCD6F /* Pods-RxTips.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxTips.debug.xcconfig"; path = "Target Support Files/Pods-RxTips/Pods-RxTips.debug.xcconfig"; sourceTree = "<group>"; };
 		90A9C3C7D9A2F92D5F393EB2 /* Pods_RxTips.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxTips.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B83E5F3B2379482B00A2A1F6 /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
 		B89A23B0237301A500F7A364 /* RxTips.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RxTips.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B89A23B3237301A500F7A364 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B89A23B8237301A500F7A364 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				B89A23F72373AB5A00F7A364 /* User.swift */,
+				B83E5F3B2379482B00A2A1F6 /* Address.swift */,
 				B89A23C9237302C900F7A364 /* ActivityIndicator.swift */,
 				B89A23CB237302D800F7A364 /* AppError.swift */,
 			);
@@ -336,6 +339,7 @@
 				B89A23E52373048A00F7A364 /* APIServiceType.swift in Sources */,
 				B89A23F82373AB5A00F7A364 /* User.swift in Sources */,
 				B89A23F02373A80800F7A364 /* StoreService.swift in Sources */,
+				B83E5F3C2379482B00A2A1F6 /* Address.swift in Sources */,
 				B89A23E72373051D00F7A364 /* APIService.swift in Sources */,
 				B89A23D22373030400F7A364 /* HUDServiceType.swift in Sources */,
 				B89A23D62373032200F7A364 /* AlertService.swift in Sources */,

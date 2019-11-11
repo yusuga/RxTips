@@ -22,12 +22,12 @@ final class TipsReactor: Reactor {
   
   enum Mutation {
     case incrementRequestCount
-    case setObjects([User])
+    case setObjects([UserModel])
   }
   
   struct State: Then {
     var requestCount = 0
-    var objects = [User]()
+    var objects = [UserModel]()
   }
   
   var initialState = State()
