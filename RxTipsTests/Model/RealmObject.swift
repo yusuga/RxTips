@@ -28,14 +28,6 @@ final class RealmObject: Object, Codable {
   @objc dynamic var stringOpt: String?
   @objc dynamic var dataOpt: Data?
   @objc dynamic var dateOpt: Date?
-  var boolOpt = RealmOptional<Bool>()
-  var intOpt = RealmOptional<Int>()
-  var int8Opt = RealmOptional<Int8>()
-  var int16Opt = RealmOptional<Int16>()
-  var int32Opt = RealmOptional<Int32>()
-  var int64Opt = RealmOptional<Int64>()
-  var floatOpt = RealmOptional<Float>()
-  var doubleOpt = RealmOptional<Double>()
 
   var stringList = List<String>()
   var dataList = List<Data>()
@@ -91,14 +83,6 @@ final class SubRealmObject: Object, Codable {
   @objc dynamic var stringOpt: String?
   @objc dynamic var dataOpt: Data?
   @objc dynamic var dateOpt: Date?
-  var boolOpt = RealmOptional<Bool>()
-  var intOpt = RealmOptional<Int>()
-  var int8Opt = RealmOptional<Int8>()
-  var int16Opt = RealmOptional<Int16>()
-  var int32Opt = RealmOptional<Int32>()
-  var int64Opt = RealmOptional<Int64>()
-  var floatOpt = RealmOptional<Float>()
-  var doubleOpt = RealmOptional<Double>()
   
   var stringList = List<String>()
   var dataList = List<Data>()

@@ -54,9 +54,9 @@ enum Helper {
     func jsonWithEmptyArray(primaryID1: String, primaryID2: String) -> Data {
       return """
         {
-        \(primitiveValuesJSON(primaryID: primaryID1)),
+        \(valuesJSON(primaryID: primaryID1)),
         "object": {
-        \(primitiveValuesJSON(primaryID: primaryID2))
+        \(valuesJSON(primaryID: primaryID2))
         },
         "objects": []
         }
@@ -65,72 +65,44 @@ enum Helper {
     
     return """
       {
-      \(primitiveValuesJSON(primaryID: "1")),
+      \(valuesJSON(primaryID: "1")),
       "object": {
-      \(primitiveValuesJSON(primaryID: "2"))
+      \(valuesJSON(primaryID: "2"))
       },
       "objects": [
-      {\(primitiveValuesJSON(primaryID: "3"))},
-      {\(primitiveValuesJSON(primaryID: "4"))}
+      {\(valuesJSON(primaryID: "3"))},
+      {\(valuesJSON(primaryID: "4"))}
       ]
       }
       """.data(using: .utf8)!
   }
   
-  static func jsonWithNull(isNullKeyRemoved: Bool) -> Data {
-    let json = """
+  static var jsonWithNull: Data {
+    return """
       {
-      \(primitiveValuesJSONWithNull(primaryID: "10")),
+      \(valuesJSONWithNull(primaryID: "1")),
       "object": null,
       "objects": []
       }
-      """.data(using: .utf8)!
-    
-    if !isNullKeyRemoved {
-      return json
-    }
-    
-    // トップの階層のnullを削除
-    return try! JSONSerialization.data(
-      withJSONObject: (JSONSerialization.jsonObject(
-        with: json, options: []
-        ) as! [String: Any?])
-        .compactMapValues { $0 },
-      options: []
-    )
+      """.data(using: .utf8)!    
   }
   
   static var complexJSON: Data {
     return """
       {
-      \(primitiveValuesJSON(primaryID: "100")),
+      \(valuesJSON(primaryID: "1")),
       "object": {
-      \(primitiveValuesJSONWithNull(primaryID: "101"))
+      \(valuesJSONWithNull(primaryID: "2"))
       },
       "objects": [
-      \(String(data: jsonWithFill, encoding: .utf8)!),
-      \(String(data: jsonWithNull(isNullKeyRemoved: false), encoding: .utf8)!)
+      {\(valuesJSON(primaryID: "3"))},
+      {\(valuesJSONWithNull(primaryID: "4"))}
       ]
       }
       """.data(using: .utf8)!
   }
-  
-  static var complexJSONAnswer: Data {
-    return """
-      {
-      \(primitiveValuesJSON(primaryID: "100")),
-      "object": {
-      \(primitiveValuesJSONWithNull(primaryID: "101"))
-      },
-      "objects": [
-      \(String(data: jsonWithFill, encoding: .utf8)!),
-      \(String(data: jsonWithNull(isNullKeyRemoved: true), encoding: .utf8)!)
-      ]
-      }
-      """.data(using: .utf8)!
-  }
-    
-  static func primitiveValuesJSON(primaryID: String) -> String {
+      
+  static func valuesJSON(primaryID: String) -> String {
     return """
     "string": "\(primaryID)",
     "data": "\(dataStr)",
@@ -147,14 +119,6 @@ enum Helper {
     "stringOpt": "abc",
     "dataOpt": "\(dataStr)",
     "dateOpt": "\(dateStr)",
-    "boolOpt": true,
-    "intOpt": 123,
-    "int8Opt": 123,
-    "int16Opt": 123,
-    "int32Opt": 123,
-    "int64Opt": 123,
-    "floatOpt": 2.5,
-    "doubleOpt": 2.5,
 
     "stringList": ["abc"],
     "dataList": ["\(dataStr)"],
@@ -182,7 +146,7 @@ enum Helper {
     """
   }
   
-  static func primitiveValuesJSONWithNull(primaryID: String) -> String {
+  static func valuesJSONWithNull(primaryID: String) -> String {
     return """
     "string": "\(primaryID)",
     "data": "\(dataStr)",
@@ -199,14 +163,6 @@ enum Helper {
     "stringOpt": null,
     "dataOpt": null,
     "dateOpt": null,
-    "boolOpt": null,
-    "intOpt": null,
-    "int8Opt": null,
-    "int16Opt": null,
-    "int32Opt": null,
-    "int64Opt": null,
-    "floatOpt": null,
-    "doubleOpt": null,
     
     "stringList": ["abc"],
     "dataList": ["\(dataStr)"],
@@ -232,5 +188,95 @@ enum Helper {
     "floatOptList": [null],
     "doubleOptList": [null]
     """
+  }
+  
+  static var optJSONWithFill: Data {
+    return """
+    {
+      "string": "1",
+      "boolOpt": true,
+      "intOpt": 123,
+      "int8Opt": 123,
+      "int16Opt": 123,
+      "int32Opt": 123,
+      "int64Opt": 123,
+      "floatOpt": 2.5,
+      "doubleOpt": 2.5,
+      "stringListOpt": ["abc"],
+      "dataListOpt": ["\(dataStr)"],
+      "dateListOpt": ["\(dateStr)"],
+      "boolListOpt": [true],
+      "intListOpt": [123],
+      "int8ListOpt": [123],
+      "int16ListOpt": [123],
+      "int32ListOpt": [123],
+      "int64ListOpt": [123],
+      "floatListOpt": [2.5],
+      "doubleListOpt": [2.5]
+    }
+    """.data(using: .utf8)!
+  }
+  
+  static var optJSONWithNull: Data {
+    return """
+    {
+      "string": "1",
+      "boolOpt": null,
+      "intOpt": null,
+      "int8Opt": null,
+      "int16Opt": null,
+      "int32Opt": null,
+      "int64Opt": null,
+      "floatOpt": null,
+      "doubleOpt": null,
+      "stringListOpt": null,
+      "dataListOpt": null,
+      "dateListOpt": null,
+      "boolListOpt": null,
+      "intListOpt": null,
+      "int8ListOpt": null,
+      "int16ListOpt": null,
+      "int32ListOpt": null,
+      "int64ListOpt": null,
+      "floatListOpt": null,
+      "doubleListOpt": null
+    }
+    """.data(using: .utf8)!
+  }
+  
+  // RealmSwift.Objectの場合、ListがオプショナルにできないためListは必ず `[]` になります。
+  static var optJSONRealmObjectAnswerWithNull: Data {
+    return """
+    {
+      "string": "1",
+      "boolOpt": null,
+      "intOpt": null,
+      "int8Opt": null,
+      "int16Opt": null,
+      "int32Opt": null,
+      "int64Opt": null,
+      "floatOpt": null,
+      "doubleOpt": null,
+      "stringListOpt": [],
+      "dataListOpt": [],
+      "dateListOpt": [],
+      "boolListOpt": [],
+      "intListOpt": [],
+      "int8ListOpt": [],
+      "int16ListOpt": [],
+      "int32ListOpt": [],
+      "int64ListOpt": [],
+      "floatListOpt": [],
+      "doubleListOpt": []
+    }
+    """.data(using: .utf8)!
+  }  
+  
+  static var optJSONWithDeletedOptionalKeys: Data {
+    return """
+    {
+      "string": "1"
+    }
+    """.data(using: .utf8)!
   }
 }

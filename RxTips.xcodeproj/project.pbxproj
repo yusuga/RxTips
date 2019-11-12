@@ -35,6 +35,9 @@
 		B89A23F42373A97300F7A364 /* ObjectConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89A23F32373A97300F7A364 /* ObjectConvertible.swift */; };
 		B89A23F62373A9C200F7A364 /* Foundation+Tips.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89A23F52373A9C200F7A364 /* Foundation+Tips.swift */; };
 		B89A23F82373AB5A00F7A364 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89A23F72373AB5A00F7A364 /* User.swift */; };
+		B8F3668A237AE77100F7AE5F /* RealmOptObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F36689237AE77100F7AE5F /* RealmOptObject.swift */; };
+		B8F3668C237AE7B200F7AE5F /* SwiftOptObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F3668B237AE7B200F7AE5F /* SwiftOptObject.swift */; };
+		B8F3668E237B087A00F7AE5F /* RealmSwift+Tips.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F3668D237B087A00F7AE5F /* RealmSwift+Tips.swift */; };
 		F126D49E6EAE771DD083CD72 /* Pods_RxTipsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89BD2AC069263AEDEC1FB49D /* Pods_RxTipsTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -87,6 +90,9 @@
 		B89A23F72373AB5A00F7A364 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		B8F36680237ADFC200F7AE5F /* RichJSONParser.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RichJSONParser.framework; path = Carthage/Build/iOS/RichJSONParser.framework; sourceTree = "<group>"; };
 		B8F36681237ADFC200F7AE5F /* FineJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FineJSON.framework; path = Carthage/Build/iOS/FineJSON.framework; sourceTree = "<group>"; };
+		B8F36689237AE77100F7AE5F /* RealmOptObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmOptObject.swift; sourceTree = "<group>"; };
+		B8F3668B237AE7B200F7AE5F /* SwiftOptObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftOptObject.swift; sourceTree = "<group>"; };
+		B8F3668D237B087A00F7AE5F /* RealmSwift+Tips.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RealmSwift+Tips.swift"; sourceTree = "<group>"; };
 		C480841CA85475B6F21B9CEC /* Pods-RxTipsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxTipsTests.release.xcconfig"; path = "Target Support Files/Pods-RxTipsTests/Pods-RxTipsTests.release.xcconfig"; sourceTree = "<group>"; };
 		CDD23833148478EC23B9D247 /* Pods-RxTipsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxTipsTests.debug.xcconfig"; path = "Target Support Files/Pods-RxTipsTests/Pods-RxTipsTests.debug.xcconfig"; sourceTree = "<group>"; };
 		EED74007A6E4F8F1520010C4 /* Pods-Tips.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tips.debug.xcconfig"; path = "Target Support Files/Pods-Tips/Pods-Tips.debug.xcconfig"; sourceTree = "<group>"; };
@@ -152,6 +158,8 @@
 			children = (
 				B84FD52C237A7FF300AA5696 /* RealmObject.swift */,
 				B84FD52E237A80DB00AA5696 /* SwiftObject.swift */,
+				B8F36689237AE77100F7AE5F /* RealmOptObject.swift */,
+				B8F3668B237AE7B200F7AE5F /* SwiftOptObject.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -239,6 +247,7 @@
 			children = (
 				B89A23F52373A9C200F7A364 /* Foundation+Tips.swift */,
 				B89A23DC2373035D00F7A364 /* RxSwift+Tips.swift */,
+				B8F3668D237B087A00F7AE5F /* RealmSwift+Tips.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -477,6 +486,8 @@
 				B84FD52F237A80DB00AA5696 /* SwiftObject.swift in Sources */,
 				B83E5F48237A7E4900A2A1F6 /* RxTipsTests.swift in Sources */,
 				B84FD531237A82C700AA5696 /* Helper.swift in Sources */,
+				B8F3668C237AE7B200F7AE5F /* SwiftOptObject.swift in Sources */,
+				B8F3668A237AE77100F7AE5F /* RealmOptObject.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -496,6 +507,7 @@
 				B89A23B4237301A500F7A364 /* AppDelegate.swift in Sources */,
 				B89A23D42373031400F7A364 /* ServiceContainer.swift in Sources */,
 				B89A23E52373048A00F7A364 /* APIServiceType.swift in Sources */,
+				B8F3668E237B087A00F7AE5F /* RealmSwift+Tips.swift in Sources */,
 				B89A23F82373AB5A00F7A364 /* User.swift in Sources */,
 				B89A23F02373A80800F7A364 /* StoreService.swift in Sources */,
 				B83E5F3C2379482B00A2A1F6 /* Address.swift in Sources */,

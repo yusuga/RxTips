@@ -26,14 +26,6 @@ struct SwiftObject: Codable {
   let stringOpt: String?
   let dataOpt: Data?
   let dateOpt: Date?
-  let boolOpt: Bool?
-  let intOpt: Int?
-  let int8Opt: Int8?
-  let int16Opt: Int16?
-  let int32Opt: Int32?
-  let int64Opt: Int64?
-  let floatOpt: Float?
-  let doubleOpt: Double?
   
   let stringList: [String]
   let dataList: [Data]
@@ -85,14 +77,6 @@ final class SubSwiftObject: Codable {
   let stringOpt: String?
   let dataOpt: Data?
   let dateOpt: Date?
-  let boolOpt: Bool?
-  let intOpt: Int?
-  let int8Opt: Int8?
-  let int16Opt: Int16?
-  let int32Opt: Int32?
-  let int64Opt: Int64?
-  let floatOpt: Float?
-  let doubleOpt: Double?
   
   let stringList: [String]
   let dataList: [Data]

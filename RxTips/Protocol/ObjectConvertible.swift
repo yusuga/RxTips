@@ -36,21 +36,3 @@ extension ObjectConvertible where Self: Encodable {
     return JSONDecoder.default
   }
 }
-
-//extension ObjectConvertible where Self: Encodable, Result: Object {
-//
-//  func convert() throws -> Result {
-//    // RealmSwift.ObjectをJSONDecoderでdecodeするとListやRealmOptionalのvalueがnullの場合にdecodeできないため、
-//    // JSONSerializationのDictionaryで初期化しています。
-//    //
-//    // `Object.init(value:,schema:)` を使用している理由は、メタタイプからは `required init` のみ呼び出し可能なためです。
-//    // https://github.com/realm/realm-cocoa/issues/5714
-//    return try Result(
-//      value: JSONSerialization.jsonObject(
-//        with: encoder.encode(self),
-//        options: []
-//      ),
-//      schema: .partialPrivateShared()
-//    )
-//  }
-//}
