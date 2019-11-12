@@ -12,8 +12,14 @@ target 'RxTips' do
   pod 'RealmSwift', '~> 3.20'
   pod 'RxRealm', '~> 1.0'
   
-  pod 'PKHUD', '~> 5.3'
-  
+  pod 'PKHUD', '~> 5.3'  
+
   pod 'URLNavigator', '~> 2.2'
   pod 'Then', '~> 2.6'
+
+  target 'RxTipsTests' do
+    inherit! :search_paths
+    pod 'Quick'
+    pod 'Nimble'
+  end
 end

@@ -1,5 +1,7 @@
 PODS:
+  - Nimble (8.0.4)
   - PKHUD (5.3.0)
+  - Quick (2.2.0)
   - ReactorKit (2.0.1):
     - RxSwift (~> 5.0)
   - Realm (3.21.0):
@@ -20,7 +22,9 @@ PODS:
   - URLNavigator (2.2.0)
 
 DEPENDENCIES:
+  - Nimble
   - PKHUD (~> 5.3)
+  - Quick
   - ReactorKit (~> 2.0)
   - RealmSwift (~> 3.20)
   - RxCocoa (~> 5.0)
@@ -31,7 +35,9 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - Nimble
     - PKHUD
+    - Quick
     - ReactorKit
     - Realm
     - RealmSwift
@@ -43,7 +49,9 @@ SPEC REPOS:
     - URLNavigator
 
 SPEC CHECKSUMS:
+  Nimble: 18d5360282923225d62b09d781f63abc1a0111fc
   PKHUD: 98f3e4bc904b9c916f1c5bb6d765365b5357291b
+  Quick: 7fb19e13be07b5dfb3b90d4f9824c855a11af40e
   ReactorKit: a63c5e11e0fd32d59d672e54178b0ed2876b764b
   Realm: 38e9dcb19104b58407167d99f70d4995f7c16023
   RealmSwift: 3183cc1ad48378fbcd634311b22c0e6c44021152
@@ -54,6 +62,6 @@ SPEC CHECKSUMS:
   Then: 90cd104fd951cec1980a03f57704ad8f784d4d79
   URLNavigator: 0bffc3efdeb2d97f7b5eec7ac82d290f4a099431
 
-PODFILE CHECKSUM: c0f093a729b3a362bf7409c1e216970e345ceaf1
+PODFILE CHECKSUM: 661dbc8408887db39d3ccb4e56f0db1534820625
 
 COCOAPODS: 1.8.4
