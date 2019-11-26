@@ -12,6 +12,9 @@ PODS:
   - RxCocoa (5.0.1):
     - RxRelay (~> 5)
     - RxSwift (~> 5)
+  - RxOptional (4.1.0):
+    - RxCocoa (~> 5)
+    - RxSwift (~> 5)
   - RxRealm (1.0.0):
     - RealmSwift (~> 3.14)
     - RxSwift (~> 5.0)
@@ -28,6 +31,7 @@ DEPENDENCIES:
   - ReactorKit (~> 2.0)
   - RealmSwift (~> 3.20)
   - RxCocoa (~> 5.0)
+  - RxOptional (~> 4.1)
   - RxRealm (~> 1.0)
   - RxSwift (~> 5.0)
   - Then (~> 2.6)
@@ -42,6 +46,7 @@ SPEC REPOS:
     - Realm
     - RealmSwift
     - RxCocoa
+    - RxOptional
     - RxRealm
     - RxRelay
     - RxSwift
@@ -56,12 +61,13 @@ SPEC CHECKSUMS:
   Realm: 38e9dcb19104b58407167d99f70d4995f7c16023
   RealmSwift: 3183cc1ad48378fbcd634311b22c0e6c44021152
   RxCocoa: e741b9749968e8a143e2b787f1dfbff2b63d0a5c
+  RxOptional: b1fcd60856807a564c0215c2184b8d33e7826dc2
   RxRealm: 1e81dcfca1fb50c3e9b3e1f8102bc875c5156a2e
   RxRelay: 89d54507f4fd4d969e6ec1d4bd7f3673640b4640
   RxSwift: e2dc62b366a3adf6a0be44ba9f405efd4c94e0c4
   Then: 90cd104fd951cec1980a03f57704ad8f784d4d79
   URLNavigator: 0bffc3efdeb2d97f7b5eec7ac82d290f4a099431
 
-PODFILE CHECKSUM: 0b090d232f31e591e5df41d155a80f0d2c29676a
+PODFILE CHECKSUM: bf979673ce06d9f93b795d9d496f88c390f5df11
 
 COCOAPODS: 1.8.4

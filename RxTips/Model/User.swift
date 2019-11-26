@@ -8,11 +8,12 @@
 
 import Foundation
 import RealmSwift
+import Then
 
 struct UserModel {
 
   let id: String
-  let snakeCaseKey: Int
+  var snakeCaseKey: Int
   let address: AddressModel
 }
 
@@ -29,6 +30,8 @@ extension UserModel: ObjectConvertible {
 
   typealias Result = UserObject
 }
+
+extension UserModel: Then { }
 
 final class UserObject: Object {
 

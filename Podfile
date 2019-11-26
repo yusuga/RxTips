@@ -7,6 +7,7 @@ target 'RxTips' do
 	
   pod 'RxSwift', '~> 5.0'
   pod 'RxCocoa', '~> 5.0'
+  pod 'RxOptional', '~> 4.1'
   pod 'ReactorKit', '~> 2.0'
   
   pod 'RealmSwift', '~> 3.20'

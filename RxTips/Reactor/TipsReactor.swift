@@ -10,24 +10,35 @@ import RxSwift
 import ReactorKit
 import Then
 import RxRealm
+import RxOptional
 
 final class TipsReactor: Reactor {
+  
+  let userID: String
+  
+  init(userID: String) {
+    self.userID = userID
+  }
   
   enum Action {
     case request
     case requestError
     case requestConfirmed
     case requestObject
+    case upsertUser
+    case deleteUser
   }
   
   enum Mutation {
     case incrementRequestCount
     case setObjects([UserModel])
+    case setUser(UserModel?)
   }
   
   struct State: Then {
     var requestCount = 0
     var objects = [UserModel]()
+    var user: UserModel?
   }
   
   var initialState = State()
@@ -74,15 +85,15 @@ final class TipsReactor: Reactor {
           self.apiService.request()
             .trackActivity(self.hudService) // 注釈1
             .asMaybe()
-        }
-        .flatMap { [unowned self] in
-          self.alertService.show(
-            title: "成功",
-            actions: [DoneAlertAction.done(nil)]
-          )
-        }
-        .asObservable()
-        .showAlertIfCatchError(alertService)
+      }
+      .flatMap { [unowned self] in
+        self.alertService.show(
+          title: "成功",
+          actions: [DoneAlertAction.done(nil)]
+        )
+      }
+      .asObservable()
+      .showAlertIfCatchError(alertService)
         .justEmpty() // 注釈2      
       /**
        # 注釈1
@@ -101,10 +112,44 @@ final class TipsReactor: Reactor {
        # 注釈
        - Realmに保存するがこのストリームではstateの更新を行わない。Realmへの変更は `transform(mutation:)` で監視する。
        */
+    case .upsertUser:
+      return Observable.just(currentState.user)
+        .replaceNilWith(
+          UserModel(
+            id: userID,
+            snakeCaseKey: 1,
+            address: AddressModel(
+              id: UUID().uuidString,
+              addressNum: 1
+            )
+          )
+      )
+        .map {
+          $0.with {
+            $0.snakeCaseKey = Int.random(in: 0...Int.max)
+          }
+      }
+      .flatMap(storeService.add())
+      .showAlertIfCatchError(alertService)
+      .justEmpty()
+    case .deleteUser:      
+      return storeService.fetch(UserObject.self, forPrimaryKey: userID)
+        .asObservable()
+        .errorOnNil(
+          AppError.failed(
+            title: "削除できません",
+            description: "user.id == \(userID)はデータベースに存在しません。"
+          )
+      )
+        .flatMap(storeService.delete())
+        .showAlertIfCatchError(alertService)
+        .justEmpty()
     }    
   }
   
   func transform(mutation: Observable<TipsReactor.Mutation>) -> Observable<TipsReactor.Mutation> {
+    let userID = self.userID
+    
     return Observable.merge(
       mutation,
       
@@ -112,6 +157,12 @@ final class TipsReactor: Reactor {
       storeService.fetch(UserObject.self)
         .map { try $0.map { try $0.convert() } } // 注釈
         .map(Mutation.setObjects)
+        .showAlertIfCatchError(alertService),
+      
+      storeService.fetch(UserObject.self)
+        .map { $0.filter { $0.id == userID } }
+        .map { try $0.first?.convert() }
+        .map(Mutation.setUser)
         .showAlertIfCatchError(alertService)
     )
     /**
@@ -135,6 +186,8 @@ final class TipsReactor: Reactor {
         state.requestCount += 1
       case .setObjects(let objects):
         state.objects = objects
+      case .setUser(let user):
+        state.user = user
       }
     }
   }

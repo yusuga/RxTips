@@ -20,7 +20,7 @@ extension StoreServiceType {
   
   func add<O: Object>(
     _ object: O, update: RealmSwift.Realm.UpdatePolicy
-    ) throws -> O {
+  ) throws -> O {
     do {
       let realm = try self.realm()
       try realm.write {
@@ -34,7 +34,7 @@ extension StoreServiceType {
   
   func add<S: Sequence>(
     _ objects: S, update: RealmSwift.Realm.UpdatePolicy
-    ) throws -> S where S.Iterator.Element: Object {
+  ) throws -> S where S.Iterator.Element: Object {
     do {
       let realm = try self.realm()
       try realm.write {
@@ -48,10 +48,10 @@ extension StoreServiceType {
 }
 
 extension StoreServiceType {
-
+  
   func add<O: Object>(
     _ object: O, update: RealmSwift.Realm.UpdatePolicy
-    ) -> Single<O> {
+  ) -> Single<O> {
     return Single.create { observer in
       do {
         try observer(.success(self.add(object, update: update)))
@@ -64,7 +64,7 @@ extension StoreServiceType {
   
   func add<S: Sequence>(
     _ objects: S, update: RealmSwift.Realm.UpdatePolicy
-    ) -> Single<S> where S.Iterator.Element: Object {
+  ) -> Single<S> where S.Iterator.Element: Object {
     return Single.create { observer in
       do {
         try observer(.success(self.add(objects, update: update)))
@@ -77,10 +77,10 @@ extension StoreServiceType {
 }
 
 extension StoreServiceType {
-
+  
   func add<O: Object>(
     update: RealmSwift.Realm.UpdatePolicy = .modified
-    ) -> ((O) throws -> Single<Object>) {
+  ) -> ((O) throws -> Single<Object>) {
     return { source in
       return self.add(source, update: update)
     }
@@ -88,7 +88,7 @@ extension StoreServiceType {
   
   func add<S: Sequence>(
     _ update: RealmSwift.Realm.UpdatePolicy = .modified
-    ) -> ((S) throws -> Single<S>) where S.Iterator.Element: Object {
+  ) -> ((S) throws -> Single<S>) where S.Iterator.Element: Object {
     return { source in
       return self.add(source, update: update)
     }
@@ -99,7 +99,7 @@ extension StoreServiceType {
   
   func add<O: ObjectConvertible & Encodable>(
     update: RealmSwift.Realm.UpdatePolicy = .modified
-    ) -> ((O) throws -> Single<O.Result>) where O.Result: Object {
+  ) -> ((O) throws -> Single<O.Result>) where O.Result: Object {
     
     return { source in
       return Single.just(source)
@@ -110,7 +110,7 @@ extension StoreServiceType {
   
   func add<S: Sequence>(
     update: RealmSwift.Realm.UpdatePolicy = .modified
-    ) -> ((S) throws -> Single<[S.Iterator.Element.Result]>) where S.Iterator.Element: ObjectConvertible, S.Iterator.Element: Encodable, S.Iterator.Element.Result: Object {
+  ) -> ((S) throws -> Single<[S.Iterator.Element.Result]>) where S.Iterator.Element: ObjectConvertible, S.Iterator.Element: Encodable, S.Iterator.Element.Result: Object {
     return { source in
       return Single.just(source)
         .map { try $0.map { try $0.convert() } }
@@ -120,6 +120,55 @@ extension StoreServiceType {
 }
 
 extension StoreServiceType {
+  
+  func delete(_ object: Object) throws {
+    do {
+      let realm = try self.realm()
+      try realm.write {
+        realm.delete(object)
+      }
+    } catch {
+      throw error
+    }
+  }
+  
+  func delete(_ object: Object) -> Single<Void> {
+    return Single.create { observer in
+      do {
+        try observer(.success(self.delete(object)))
+      } catch {
+        observer(.error(error))
+      }
+      return Disposables.create()
+    }
+  }
+  
+  func delete() -> ((Object) throws -> Single<Void>) {
+    return { source in
+      return Single.just(source)
+        .flatMap { self.delete($0) }
+    }
+  }
+}
+
+extension StoreServiceType {
+  
+  func fetch<O: Object>(_ type: O.Type, forPrimaryKey primaryKey: String) -> Single<O?> {
+    return Single.create { observer in
+      do {
+        try observer(
+          .success(
+            self.realm().object(
+              ofType: type, forPrimaryKey: primaryKey
+            )
+          )
+        )
+      } catch {
+        observer(.error(error))
+      }
+      return Disposables.create()
+    }
+  }
   
   func fetch<O: Object>(_ type: O.Type) -> Observable<[O]> {
     do {

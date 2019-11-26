@@ -10,11 +10,15 @@ import UIKit
 import RxSwift
 import RxCocoa
 import ReactorKit
+import RxOptional
 
 final class TipsViewController: UITableViewController, StoryboardView {
 
   @IBOutlet private weak var requestCountLabel: UILabel!
   @IBOutlet private weak var objectsCountLabel: UILabel!
+  
+  @IBOutlet private weak var userIDLabel: UILabel!
+  @IBOutlet private weak var userSnakeCaseKeyLabel: UILabel!
   
   var disposeBag = DisposeBag()
   
@@ -23,7 +27,7 @@ final class TipsViewController: UITableViewController, StoryboardView {
     
     // ReactorKitの設計思想から外れますが、ViewやReactorのUnit testを行わないのであれば
     // View内で初期化してもいいかなと思う。
-    reactor = TipsReactor()
+    reactor = TipsReactor(userID: "target")
   }
   
   func bind(reactor: TipsReactor) {
@@ -35,6 +39,18 @@ final class TipsViewController: UITableViewController, StoryboardView {
     reactor.state.map { String($0.objects.count) }
       .bind(to: objectsCountLabel.rx.text)
       .disposed(by: disposeBag)
+    
+    reactor.state.map { $0.user?.id }
+      .replaceNilWith("nil")
+      .bind(to: userIDLabel.rx.text)
+      .disposed(by: disposeBag)
+    
+    reactor.state.map {
+      $0.user.flatMap { String($0.snakeCaseKey) }
+    }
+    .replaceNilWith("nil")
+    .bind(to: userSnakeCaseKeyLabel.rx.text)
+    .disposed(by: disposeBag)
     
     // Action
     tableView.rx.itemSelected
@@ -56,6 +72,8 @@ private extension IndexPath {
       case 1: return .requestError
       case 2: return .requestConfirmed
       case 3: return .requestObject
+      case 4: return .upsertUser
+      case 5: return .deleteUser
       default: return nil
       }
     default: return nil
