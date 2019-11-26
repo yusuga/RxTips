@@ -9,16 +9,7 @@
 import Foundation
 import RealmSwift
 
-protocol User {
-  
-  associatedtype A = Address
-
-  var id: String { get }
-  var snakeCaseKey: Int { get }
-  var address: A { get }
-}
-
-struct UserModel: User {
+struct UserModel {
 
   let id: String
   let snakeCaseKey: Int
@@ -39,7 +30,7 @@ extension UserModel: ObjectConvertible {
   typealias Result = UserObject
 }
 
-final class UserObject: Object, User {
+final class UserObject: Object {
 
   @objc dynamic var id = ""
   @objc dynamic var snakeCaseKey = 0
