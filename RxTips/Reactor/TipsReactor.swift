@@ -25,6 +25,7 @@ final class TipsReactor: Reactor {
     case requestError
     case requestConfirmed
     case requestObject
+    case requestJSON
     case upsertUser
     case deleteUser
   }
@@ -112,6 +113,14 @@ final class TipsReactor: Reactor {
        # 注釈
        - Realmに保存するがこのストリームではstateの更新を行わない。Realmへの変更は `transform(mutation:)` で監視する。
        */
+      
+    case .requestJSON:
+      return apiService.requestJSON()
+      .flatMap(storeService.add())
+      .trackActivity(hudService)
+      .showAlertIfCatchError(alertService)
+      .justEmpty()
+      
     case .upsertUser:
       return Observable.just(currentState.user)
         .replaceNilWith(

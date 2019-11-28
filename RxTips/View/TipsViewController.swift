@@ -72,8 +72,9 @@ private extension IndexPath {
       case 1: return .requestError
       case 2: return .requestConfirmed
       case 3: return .requestObject
-      case 4: return .upsertUser
-      case 5: return .deleteUser
+      case 4: return .requestJSON
+      case 5: return .upsertUser
+      case 6: return .deleteUser
       default: return nil
       }
     default: return nil

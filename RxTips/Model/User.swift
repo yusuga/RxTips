@@ -15,6 +15,7 @@ struct UserModel {
   let id: String
   var snakeCaseKey: Int
   let address: AddressModel
+  let value = Defines.defaultValue
 }
 
 extension UserModel: Codable {
@@ -23,6 +24,7 @@ extension UserModel: Codable {
     case id
     case snakeCaseKey = "snake_case_key"
     case address = "address"
+    case value = "value"
   }
 }
 
@@ -38,6 +40,7 @@ final class UserObject: Object {
   @objc dynamic var id = ""
   @objc dynamic var snakeCaseKey = 0
   @objc dynamic var address: AddressObject?
+  @objc dynamic var value = ""
 
   override class func primaryKey() -> String? {
     return #keyPath(id)

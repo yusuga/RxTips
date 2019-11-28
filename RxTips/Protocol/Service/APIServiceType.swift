@@ -33,4 +33,23 @@ extension APIServiceType {
         )
     }
   }
+  
+  func requestJSON() -> Single<UserModel> {
+    return request()
+      .map {
+        """
+        {
+          "id": "\(UUID().uuidString)",
+          "snake_case_key": 1,
+          "address": {
+            "id": "1",
+            "address_num": 1
+          }
+        }
+        """.data(using: .utf8)!
+    }
+    .map {
+      try JSONDecoder().decode(UserModel.self, from: $0)
+    }
+  }
 }
