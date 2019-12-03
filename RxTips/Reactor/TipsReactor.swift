@@ -28,6 +28,7 @@ final class TipsReactor: Reactor {
     case requestJSON
     case upsertUser
     case deleteUser
+    case convertResponseToModel
   }
   
   enum Mutation {
@@ -153,6 +154,29 @@ final class TipsReactor: Reactor {
         .flatMap(storeService.delete())
         .showAlertIfCatchError(alertService)
         .justEmpty()
+    case .convertResponseToModel:
+      let response = UserResponse(
+        id: UUID().uuidString,
+        snakeCaseKey: Int.random(in: 0...Int.max),
+        addressID: UUID().uuidString,
+        addressNum: Int.random(in: 0...Int.max)
+      )
+      return Observable.just(response)
+        .map { try $0.convert() }
+        .filter { model in
+          guard
+            model.id == response.id,
+            model.snakeCaseKey == response.snakeCaseKey,
+            model.address.id == response.addressID,
+            model.address.addressNum == response.addressNum
+            else {
+              throw AppError.failed(title: "変換できていません", description: "response: \(response), model: \(model)")
+          }
+          return true
+      }
+      .debug()
+      .showAlertIfCatchError(alertService)
+      .justEmpty()
     }    
   }
   

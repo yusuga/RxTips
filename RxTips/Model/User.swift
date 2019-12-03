@@ -52,3 +52,30 @@ extension UserObject: ObjectConvertible, Codable {
   typealias Result = UserModel
   typealias CodingKeys = Result.CodingKeys
 }
+
+struct UserResponse {
+  
+  let id: String
+  let snakeCaseKey: Int
+  let addressID: String
+  let addressNum: Int
+}
+
+extension UserResponse: ObjectConvertible {
+
+  typealias Result = UserModel
+}
+
+extension ObjectConvertible where Self == UserResponse {
+  
+  func convert() throws -> UserModel {
+    return UserModel(
+      id: self.id,
+      snakeCaseKey: self.snakeCaseKey,
+      address: AddressModel(
+        id: self.addressID,
+        addressNum: self.addressNum
+      )
+    )
+  }
+}

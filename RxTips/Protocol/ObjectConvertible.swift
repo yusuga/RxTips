@@ -13,6 +13,8 @@ import Realm
 protocol ObjectConvertible {
   
   associatedtype Result: Decodable
+  
+  func convert() throws -> Result
 }
 
 extension ObjectConvertible where Self: Encodable {

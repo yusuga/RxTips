@@ -75,6 +75,7 @@ private extension IndexPath {
       case 4: return .requestJSON
       case 5: return .upsertUser
       case 6: return .deleteUser
+      case 7: return .convertResponseToModel
       default: return nil
       }
     default: return nil
