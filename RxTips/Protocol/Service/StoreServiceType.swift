@@ -11,7 +11,7 @@ import RxSwift
 import RealmSwift
 import RxRealm
 
-protocol StoreServiceType: class {
+protocol StoreServiceType: AnyObject {
   
   func realm() throws -> Realm
 }
@@ -56,7 +56,7 @@ extension StoreServiceType {
       do {
         try observer(.success(self.add(object, update: update)))
       } catch {
-        observer(.error(error))
+        observer(.failure(error))
       }
       return Disposables.create()
     }
@@ -69,7 +69,7 @@ extension StoreServiceType {
       do {
         try observer(.success(self.add(objects, update: update)))
       } catch {
-        observer(.error(error))
+        observer(.failure(error))
       }
       return Disposables.create()
     }
@@ -137,7 +137,7 @@ extension StoreServiceType {
       do {
         try observer(.success(self.delete(object)))
       } catch {
-        observer(.error(error))
+        observer(.failure(error))
       }
       return Disposables.create()
     }
@@ -164,7 +164,7 @@ extension StoreServiceType {
           )
         )
       } catch {
-        observer(.error(error))
+        observer(.failure(error))
       }
       return Disposables.create()
     }

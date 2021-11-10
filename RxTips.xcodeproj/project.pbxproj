@@ -3,13 +3,24 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A69E849E8E9BB92E5422887E /* Pods_RxTips.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90A9C3C7D9A2F92D5F393EB2 /* Pods_RxTips.framework */; };
 		B83E5F3C2379482B00A2A1F6 /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83E5F3B2379482B00A2A1F6 /* Address.swift */; };
 		B83E5F48237A7E4900A2A1F6 /* RxTipsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83E5F47237A7E4900A2A1F6 /* RxTipsTests.swift */; };
+		B84F890E273C0483007F8CCF /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = B84F890D273C0483007F8CCF /* RxCocoa */; };
+		B84F8910273C0483007F8CCF /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = B84F890F273C0483007F8CCF /* RxRelay */; };
+		B84F8912273C0483007F8CCF /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B84F8911273C0483007F8CCF /* RxSwift */; };
+		B84F8915273C04BA007F8CCF /* RxOptional in Frameworks */ = {isa = PBXBuildFile; productRef = B84F8914273C04BA007F8CCF /* RxOptional */; };
+		B84F8918273C04E2007F8CCF /* ReactorKit in Frameworks */ = {isa = PBXBuildFile; productRef = B84F8917273C04E2007F8CCF /* ReactorKit */; };
+		B84F891B273C052A007F8CCF /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = B84F891A273C052A007F8CCF /* Realm */; };
+		B84F891D273C052A007F8CCF /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = B84F891C273C052A007F8CCF /* RealmSwift */; };
+		B84F8920273C05E3007F8CCF /* RxRealm in Frameworks */ = {isa = PBXBuildFile; productRef = B84F891F273C05E3007F8CCF /* RxRealm */; };
+		B84F8923273C0618007F8CCF /* PKHUD in Frameworks */ = {isa = PBXBuildFile; productRef = B84F8922273C0618007F8CCF /* PKHUD */; };
+		B84F8926273C0638007F8CCF /* URLMatcher in Frameworks */ = {isa = PBXBuildFile; productRef = B84F8925273C0638007F8CCF /* URLMatcher */; };
+		B84F8928273C0638007F8CCF /* URLNavigator in Frameworks */ = {isa = PBXBuildFile; productRef = B84F8927273C0638007F8CCF /* URLNavigator */; };
+		B84F892B273C0653007F8CCF /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = B84F892A273C0653007F8CCF /* Then */; };
 		B84FD52D237A7FF300AA5696 /* RealmObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84FD52C237A7FF300AA5696 /* RealmObject.swift */; };
 		B84FD52F237A80DB00AA5696 /* SwiftObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84FD52E237A80DB00AA5696 /* SwiftObject.swift */; };
 		B84FD531237A82C700AA5696 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B84FD530237A82C700AA5696 /* Helper.swift */; };
@@ -39,7 +50,6 @@
 		B8F3668C237AE7B200F7AE5F /* SwiftOptObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F3668B237AE7B200F7AE5F /* SwiftOptObject.swift */; };
 		B8F3668E237B087A00F7AE5F /* RealmSwift+Tips.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F3668D237B087A00F7AE5F /* RealmSwift+Tips.swift */; };
 		B8F4BD05239031DE005729C9 /* Defines.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8F4BD04239031DE005729C9 /* Defines.swift */; };
-		F126D49E6EAE771DD083CD72 /* Pods_RxTipsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89BD2AC069263AEDEC1FB49D /* Pods_RxTipsTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,11 +63,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0CF72BF10B371175C084D314 /* Pods-Tips.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tips.release.xcconfig"; path = "Target Support Files/Pods-Tips/Pods-Tips.release.xcconfig"; sourceTree = "<group>"; };
-		2E6920B072BE942C89B43C33 /* Pods-RxTips.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxTips.release.xcconfig"; path = "Target Support Files/Pods-RxTips/Pods-RxTips.release.xcconfig"; sourceTree = "<group>"; };
-		453B05066D1AC653988FCD6F /* Pods-RxTips.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxTips.debug.xcconfig"; path = "Target Support Files/Pods-RxTips/Pods-RxTips.debug.xcconfig"; sourceTree = "<group>"; };
-		89BD2AC069263AEDEC1FB49D /* Pods_RxTipsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxTipsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		90A9C3C7D9A2F92D5F393EB2 /* Pods_RxTips.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxTips.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B83E5F3B2379482B00A2A1F6 /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
 		B83E5F45237A7E4900A2A1F6 /* RxTipsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RxTipsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B83E5F47237A7E4900A2A1F6 /* RxTipsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxTipsTests.swift; sourceTree = "<group>"; };
@@ -89,15 +94,10 @@
 		B89A23F32373A97300F7A364 /* ObjectConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectConvertible.swift; sourceTree = "<group>"; };
 		B89A23F52373A9C200F7A364 /* Foundation+Tips.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Foundation+Tips.swift"; sourceTree = "<group>"; };
 		B89A23F72373AB5A00F7A364 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		B8F36680237ADFC200F7AE5F /* RichJSONParser.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RichJSONParser.framework; path = Carthage/Build/iOS/RichJSONParser.framework; sourceTree = "<group>"; };
-		B8F36681237ADFC200F7AE5F /* FineJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FineJSON.framework; path = Carthage/Build/iOS/FineJSON.framework; sourceTree = "<group>"; };
 		B8F36689237AE77100F7AE5F /* RealmOptObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmOptObject.swift; sourceTree = "<group>"; };
 		B8F3668B237AE7B200F7AE5F /* SwiftOptObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftOptObject.swift; sourceTree = "<group>"; };
 		B8F3668D237B087A00F7AE5F /* RealmSwift+Tips.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RealmSwift+Tips.swift"; sourceTree = "<group>"; };
 		B8F4BD04239031DE005729C9 /* Defines.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defines.swift; sourceTree = "<group>"; };
-		C480841CA85475B6F21B9CEC /* Pods-RxTipsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxTipsTests.release.xcconfig"; path = "Target Support Files/Pods-RxTipsTests/Pods-RxTipsTests.release.xcconfig"; sourceTree = "<group>"; };
-		CDD23833148478EC23B9D247 /* Pods-RxTipsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxTipsTests.debug.xcconfig"; path = "Target Support Files/Pods-RxTipsTests/Pods-RxTipsTests.debug.xcconfig"; sourceTree = "<group>"; };
-		EED74007A6E4F8F1520010C4 /* Pods-Tips.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tips.debug.xcconfig"; path = "Target Support Files/Pods-Tips/Pods-Tips.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,7 +105,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F126D49E6EAE771DD083CD72 /* Pods_RxTipsTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -113,37 +112,24 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A69E849E8E9BB92E5422887E /* Pods_RxTips.framework in Frameworks */,
+				B84F8923273C0618007F8CCF /* PKHUD in Frameworks */,
+				B84F8928273C0638007F8CCF /* URLNavigator in Frameworks */,
+				B84F891B273C052A007F8CCF /* Realm in Frameworks */,
+				B84F8912273C0483007F8CCF /* RxSwift in Frameworks */,
+				B84F8920273C05E3007F8CCF /* RxRealm in Frameworks */,
+				B84F891D273C052A007F8CCF /* RealmSwift in Frameworks */,
+				B84F8926273C0638007F8CCF /* URLMatcher in Frameworks */,
+				B84F892B273C0653007F8CCF /* Then in Frameworks */,
+				B84F8910273C0483007F8CCF /* RxRelay in Frameworks */,
+				B84F8915273C04BA007F8CCF /* RxOptional in Frameworks */,
+				B84F8918273C04E2007F8CCF /* ReactorKit in Frameworks */,
+				B84F890E273C0483007F8CCF /* RxCocoa in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		48C1E4B2AC14DBE72068BCD0 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				B8F36681237ADFC200F7AE5F /* FineJSON.framework */,
-				B8F36680237ADFC200F7AE5F /* RichJSONParser.framework */,
-				90A9C3C7D9A2F92D5F393EB2 /* Pods_RxTips.framework */,
-				89BD2AC069263AEDEC1FB49D /* Pods_RxTipsTests.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		A9CF85595DFD1CF84E1E4965 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				EED74007A6E4F8F1520010C4 /* Pods-Tips.debug.xcconfig */,
-				0CF72BF10B371175C084D314 /* Pods-Tips.release.xcconfig */,
-				453B05066D1AC653988FCD6F /* Pods-RxTips.debug.xcconfig */,
-				2E6920B072BE942C89B43C33 /* Pods-RxTips.release.xcconfig */,
-				CDD23833148478EC23B9D247 /* Pods-RxTipsTests.debug.xcconfig */,
-				C480841CA85475B6F21B9CEC /* Pods-RxTipsTests.release.xcconfig */,
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
 		B83E5F46237A7E4900A2A1F6 /* RxTipsTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -180,8 +166,6 @@
 				B89A23B2237301A500F7A364 /* RxTips */,
 				B83E5F46237A7E4900A2A1F6 /* RxTipsTests */,
 				B89A23B1237301A500F7A364 /* Products */,
-				A9CF85595DFD1CF84E1E4965 /* Pods */,
-				48C1E4B2AC14DBE72068BCD0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -298,11 +282,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B83E5F4E237A7E4900A2A1F6 /* Build configuration list for PBXNativeTarget "RxTipsTests" */;
 			buildPhases = (
-				41CADF657B5C37EA55CA306C /* [CP] Check Pods Manifest.lock */,
 				B83E5F41237A7E4900A2A1F6 /* Sources */,
 				B83E5F42237A7E4900A2A1F6 /* Frameworks */,
 				B83E5F43237A7E4900A2A1F6 /* Resources */,
-				AAB166131B47B2232A818605 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -318,17 +300,29 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B89A23C2237301A600F7A364 /* Build configuration list for PBXNativeTarget "RxTips" */;
 			buildPhases = (
-				7382974708BF2922B506659F /* [CP] Check Pods Manifest.lock */,
 				B89A23AC237301A500F7A364 /* Sources */,
 				B89A23AD237301A500F7A364 /* Frameworks */,
 				B89A23AE237301A500F7A364 /* Resources */,
-				F6723E8D17778D42DF3BFE75 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = RxTips;
+			packageProductDependencies = (
+				B84F890D273C0483007F8CCF /* RxCocoa */,
+				B84F890F273C0483007F8CCF /* RxRelay */,
+				B84F8911273C0483007F8CCF /* RxSwift */,
+				B84F8914273C04BA007F8CCF /* RxOptional */,
+				B84F8917273C04E2007F8CCF /* ReactorKit */,
+				B84F891A273C052A007F8CCF /* Realm */,
+				B84F891C273C052A007F8CCF /* RealmSwift */,
+				B84F891F273C05E3007F8CCF /* RxRealm */,
+				B84F8922273C0618007F8CCF /* PKHUD */,
+				B84F8925273C0638007F8CCF /* URLMatcher */,
+				B84F8927273C0638007F8CCF /* URLNavigator */,
+				B84F892A273C0653007F8CCF /* Then */,
+			);
 			productName = Tips;
 			productReference = B89A23B0237301A500F7A364 /* RxTips.app */;
 			productType = "com.apple.product-type.application";
@@ -361,6 +355,16 @@
 				Base,
 			);
 			mainGroup = B89A23A7237301A500F7A364;
+			packageReferences = (
+				B84F890C273C0483007F8CCF /* XCRemoteSwiftPackageReference "RxSwift" */,
+				B84F8913273C04BA007F8CCF /* XCRemoteSwiftPackageReference "RxOptional" */,
+				B84F8916273C04E2007F8CCF /* XCRemoteSwiftPackageReference "ReactorKit" */,
+				B84F8919273C052A007F8CCF /* XCRemoteSwiftPackageReference "realm-cocoa" */,
+				B84F891E273C05E3007F8CCF /* XCRemoteSwiftPackageReference "RxRealm" */,
+				B84F8921273C0618007F8CCF /* XCRemoteSwiftPackageReference "PKHUD" */,
+				B84F8924273C0638007F8CCF /* XCRemoteSwiftPackageReference "URLNavigator" */,
+				B84F8929273C0652007F8CCF /* XCRemoteSwiftPackageReference "Then" */,
+			);
 			productRefGroup = B89A23B1237301A500F7A364 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -390,87 +394,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		41CADF657B5C37EA55CA306C /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-RxTipsTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		7382974708BF2922B506659F /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-RxTips-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		AAB166131B47B2232A818605 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-RxTipsTests/Pods-RxTipsTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-RxTipsTests/Pods-RxTipsTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RxTipsTests/Pods-RxTipsTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F6723E8D17778D42DF3BFE75 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-RxTips/Pods-RxTips-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-RxTips/Pods-RxTips-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RxTips/Pods-RxTips-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		B83E5F41237A7E4900A2A1F6 /* Sources */ = {
@@ -547,7 +470,6 @@
 /* Begin XCBuildConfiguration section */
 		B83E5F4C237A7E4900A2A1F6 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CDD23833148478EC23B9D247 /* Pods-RxTipsTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -585,7 +507,6 @@
 		};
 		B83E5F4D237A7E4900A2A1F6 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C480841CA85475B6F21B9CEC /* Pods-RxTipsTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -739,7 +660,6 @@
 		};
 		B89A23C3237301A600F7A364 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 453B05066D1AC653988FCD6F /* Pods-RxTips.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -759,7 +679,6 @@
 		};
 		B89A23C4237301A600F7A364 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2E6920B072BE942C89B43C33 /* Pods-RxTips.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -808,6 +727,136 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B84F890C273C0483007F8CCF /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:ReactiveX/RxSwift.git";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 6.2.0;
+			};
+		};
+		B84F8913273C04BA007F8CCF /* XCRemoteSwiftPackageReference "RxOptional" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RxSwiftCommunity/RxOptional";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		B84F8916273C04E2007F8CCF /* XCRemoteSwiftPackageReference "ReactorKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactorKit/ReactorKit";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 3.1.0;
+			};
+		};
+		B84F8919273C052A007F8CCF /* XCRemoteSwiftPackageReference "realm-cocoa" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-cocoa";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 10.19.0;
+			};
+		};
+		B84F891E273C05E3007F8CCF /* XCRemoteSwiftPackageReference "RxRealm" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RxSwiftCommunity/RxRealm";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		B84F8921273C0618007F8CCF /* XCRemoteSwiftPackageReference "PKHUD" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pkluz/PKHUD";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 5.4.0;
+			};
+		};
+		B84F8924273C0638007F8CCF /* XCRemoteSwiftPackageReference "URLNavigator" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/devxoul/URLNavigator";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 2.3.0;
+			};
+		};
+		B84F8929273C0652007F8CCF /* XCRemoteSwiftPackageReference "Then" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/devxoul/Then";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 2.7.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B84F890D273C0483007F8CCF /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B84F890C273C0483007F8CCF /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		B84F890F273C0483007F8CCF /* RxRelay */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B84F890C273C0483007F8CCF /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxRelay;
+		};
+		B84F8911273C0483007F8CCF /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B84F890C273C0483007F8CCF /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+		B84F8914273C04BA007F8CCF /* RxOptional */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B84F8913273C04BA007F8CCF /* XCRemoteSwiftPackageReference "RxOptional" */;
+			productName = RxOptional;
+		};
+		B84F8917273C04E2007F8CCF /* ReactorKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B84F8916273C04E2007F8CCF /* XCRemoteSwiftPackageReference "ReactorKit" */;
+			productName = ReactorKit;
+		};
+		B84F891A273C052A007F8CCF /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B84F8919273C052A007F8CCF /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			productName = Realm;
+		};
+		B84F891C273C052A007F8CCF /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B84F8919273C052A007F8CCF /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			productName = RealmSwift;
+		};
+		B84F891F273C05E3007F8CCF /* RxRealm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B84F891E273C05E3007F8CCF /* XCRemoteSwiftPackageReference "RxRealm" */;
+			productName = RxRealm;
+		};
+		B84F8922273C0618007F8CCF /* PKHUD */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B84F8921273C0618007F8CCF /* XCRemoteSwiftPackageReference "PKHUD" */;
+			productName = PKHUD;
+		};
+		B84F8925273C0638007F8CCF /* URLMatcher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B84F8924273C0638007F8CCF /* XCRemoteSwiftPackageReference "URLNavigator" */;
+			productName = URLMatcher;
+		};
+		B84F8927273C0638007F8CCF /* URLNavigator */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B84F8924273C0638007F8CCF /* XCRemoteSwiftPackageReference "URLNavigator" */;
+			productName = URLNavigator;
+		};
+		B84F892A273C0653007F8CCF /* Then */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B84F8929273C0652007F8CCF /* XCRemoteSwiftPackageReference "Then" */;
+			productName = Then;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = B89A23A8237301A500F7A364 /* Project object */;
 }

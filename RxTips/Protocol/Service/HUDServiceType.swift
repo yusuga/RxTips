@@ -10,7 +10,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-protocol HUDServiceType: class {
+protocol HUDServiceType: AnyObject {
   
   var activityIndicator: ActivityIndicator { get }
   

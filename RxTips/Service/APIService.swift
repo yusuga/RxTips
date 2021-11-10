@@ -20,6 +20,6 @@ extension APIService: APIServiceType {
         RxTimeInterval.seconds(1),
         scheduler: ConcurrentDispatchQueueScheduler(qos: .default)
       )
-      .observeOn(MainScheduler.instance)
+      .observe(on: MainScheduler.instance)
   }  
 }

@@ -6,6 +6,7 @@
 //  Copyright © 2019 Yu Sugawara. All rights reserved.
 //
 
+import Foundation
 import RxSwift
 import ReactorKit
 import Then

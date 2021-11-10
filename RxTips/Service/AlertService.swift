@@ -28,8 +28,7 @@ final class AlertService: AlertServiceType {
     preferredStyle: UIAlertController.Style,
     actions: [Action],
     textFieldConfigurationHandlers: [(UITextField) -> Void]?
-    ) -> Maybe<Action> {
-    
+  ) -> Maybe<Action> {    
     return Maybe.create { [unowned self] observer -> Disposable in
       let alert = UIAlertController(title: title, message: message, preferredStyle: preferredStyle)
       
