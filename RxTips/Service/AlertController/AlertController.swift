@@ -1,5 +1,5 @@
 //
-//  AlertService.swift
+//  AlertController.swift
 //  RxTips
 //
 //  Created by Yu Sugawara on 2019/11/06.
@@ -10,17 +10,7 @@ import UIKit
 import URLNavigator
 import RxSwift
 
-final class AlertService: AlertServiceType {
-  
-  struct Dependency {
-    let navigator: NavigatorType
-  }
-  
-  private let dependency: Dependency
-  
-  init(dependency: Dependency) {
-    self.dependency = dependency
-  }
+final class AlertController: AlertControllerType {
   
   func show<Action: AlertActionType>(
     title: String?,
@@ -29,7 +19,7 @@ final class AlertService: AlertServiceType {
     actions: [Action],
     textFieldConfigurationHandlers: [(UITextField) -> Void]?
   ) -> Maybe<Action> {    
-    return Maybe.create { [unowned self] observer -> Disposable in
+    return Maybe.create { observer -> Disposable in
       let alert = UIAlertController(title: title, message: message, preferredStyle: preferredStyle)
       
       actions.forEach { action in
@@ -42,7 +32,7 @@ final class AlertService: AlertServiceType {
         alert.addTextField(configurationHandler: $0)
       }
       
-      if self.dependency.navigator.present(alert) == nil {
+      if Self.navigator.present(alert) == nil {
         observer(.error(AppError.navigatorError))
         return Disposables.create()
       }

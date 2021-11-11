@@ -1,5 +1,5 @@
 //
-//  StoreServiceType.swift
+//  StoreType.swift
 //  RxTips
 //
 //  Created by Yu Sugawara on 2019/11/07.
@@ -11,12 +11,12 @@ import RxSwift
 import RealmSwift
 import RxRealm
 
-protocol StoreServiceType: AnyObject {
+protocol StoreType: AnyObject {
   
   func realm() throws -> Realm
 }
 
-extension StoreServiceType {
+extension StoreType {
   
   func add<O: Object>(
     _ object: O, update: RealmSwift.Realm.UpdatePolicy
@@ -47,7 +47,7 @@ extension StoreServiceType {
   }
 }
 
-extension StoreServiceType {
+extension StoreType {
   
   func add<O: Object>(
     _ object: O, update: RealmSwift.Realm.UpdatePolicy
@@ -76,7 +76,7 @@ extension StoreServiceType {
   }
 }
 
-extension StoreServiceType {
+extension StoreType {
   
   func add<O: Object>(
     update: RealmSwift.Realm.UpdatePolicy = .modified
@@ -95,7 +95,7 @@ extension StoreServiceType {
   }
 }
 
-extension StoreServiceType {
+extension StoreType {
   
   func add<O: ObjectConvertible & Encodable>(
     update: RealmSwift.Realm.UpdatePolicy = .modified
@@ -119,7 +119,7 @@ extension StoreServiceType {
   }
 }
 
-extension StoreServiceType {
+extension StoreType {
   
   func delete(_ object: Object) throws {
     do {
@@ -151,7 +151,7 @@ extension StoreServiceType {
   }
 }
 
-extension StoreServiceType {
+extension StoreType {
   
   func fetch<O: Object>(_ type: O.Type, forPrimaryKey primaryKey: String) -> Single<O?> {
     return Single.create { observer in

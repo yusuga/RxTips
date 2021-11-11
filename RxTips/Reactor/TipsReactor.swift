@@ -23,8 +23,10 @@ final class TipsReactor: Reactor {
   
   enum Action {
     case request
+    case showNestedHUD
     case requestError
     case requestConfirmed
+    case requestSelection
     case requestObject
     case requestJSON
     case upsertUser
@@ -49,12 +51,10 @@ final class TipsReactor: Reactor {
   func mutate(action: Action) -> Observable<Mutation> {
     switch action {
     case .request:
-      return apiService
+      return Self.apiClient
         .request()
         .map { Mutation.incrementRequestCount }
-        .asObservable()
-        .trackActivity(hudService) // 注釈
-        .showAlertIfCatchError(alertService)
+        .showHUD() // 注釈
       /**
        # 注釈
        - Observable.usingを使用したHUD表示です。
@@ -68,13 +68,53 @@ final class TipsReactor: Reactor {
        https://qiita.com/k5n/items/e80ab6bff4bbb170122d#using
        */
       
+    case .showNestedHUD:
+      return Single.just(())
+        .flatMap {
+          Single.just(())
+            .delay(RxTimeInterval.seconds(2), scheduler: ConcurrentDispatchQueueScheduler(qos: .background))
+            .observeOnMainScheduler()
+            .showHUDSingle(title: "ネストしたHUD")
+        }
+        .flatMap {
+          Single.just(())
+            .delay(RxTimeInterval.seconds(1), scheduler: ConcurrentDispatchQueueScheduler(qos: .background))
+            .observeOnMainScheduler()
+            .showHUDSingle(title: "タイトルを更新 1/3", subTitle: "サブタイトル 1/3")
+        }
+        .flatMap {
+          Single.just(())
+            .delay(RxTimeInterval.seconds(1), scheduler: ConcurrentDispatchQueueScheduler(qos: .background))
+            .observeOnMainScheduler()
+            .showHUDSingle(title: "タイトルを更新 2/3", subTitle: "サブタイトル 2/3")
+        }
+        .flatMap {
+          Single.just(())
+            .delay(RxTimeInterval.seconds(1), scheduler: ConcurrentDispatchQueueScheduler(qos: .background))
+            .observeOnMainScheduler()
+            .showHUDSingle(title: "タイトルを更新 3/3", subTitle: "サブタイトル 3/3")
+        }
+        .flatMap {
+          Single.just(())
+            .delay(RxTimeInterval.seconds(1), scheduler: ConcurrentDispatchQueueScheduler(qos: .background))
+            .observeOnMainScheduler()
+            .showHUDSingle()
+        }
+        .flatMap {
+          Single.just(())
+            .delay(RxTimeInterval.seconds(1), scheduler: ConcurrentDispatchQueueScheduler(qos: .background))
+            .observeOnMainScheduler()
+            .showHUDSingle(title: "nilの後に更新", subTitle: "サブタイトル")
+        }
+        .showHUD()
+        .justEmpty()
+      
     case .requestError:
-      return apiService
+      return Self.apiClient
         .requestError()
         .map { Mutation.incrementRequestCount }
-        .asObservable()
-        .trackActivity(hudService)
-        .showAlertIfCatchError(alertService) // 注釈
+        .showHUD(title: "リクエスト中", subTitle: "エラーが発生する")
+        .showAlertIfCatchError() // 注釈
       /**
        # 注釈
        - catchErrorをラップしたもので、ストリームにerrorが流れてきたら
@@ -82,22 +122,21 @@ final class TipsReactor: Reactor {
        */
       
     case .requestConfirmed:
-      return alertService
+      return Self.alertController
         .showConfirmAlert(title: "リクエストしますか？")
-        .flatMap { [unowned self] _ in
-          self.apiService.request()
-            .trackActivity(self.hudService) // 注釈1
-            .asMaybe()
-      }
-      .flatMap { [unowned self] in
-        self.alertService.show(
-          title: "成功",
-          actions: [DoneAlertAction.done(nil)]
-        )
-      }
-      .asObservable()
-      .showAlertIfCatchError(alertService)
-        .justEmpty() // 注釈2      
+        .flatMap {
+          Self.apiClient.request()
+            .showHUDMaybe(title: "リクエスト中", subTitle: "flatMap内") // 注釈1
+        }
+        .flatMap {
+          Self.alertController.show(
+            title: "成功",
+            actions: [DoneAlertAction.done(nil)]
+          )
+        }
+        .asObservable()
+        .showAlertIfCatchError()
+        .justEmpty() // 注釈2
       /**
        # 注釈1
        - flatMap内のObservableがsubscribeされるときにHUDが表示される
@@ -105,11 +144,33 @@ final class TipsReactor: Reactor {
        - Observable.empty()をラップしたもので、イベントを流す必要がない場合に使用するシンタックスシュガー
        */
       
+    case .requestSelection:
+      return Self.alertController
+        .show(
+          title: "何をリクエストしますか？",
+          preferredStyle: .actionSheet,
+          actions: APIClientAction.allCases
+        )
+        .compactMap { $0.requestType }
+        .flatMap {
+          $0.execute()
+            .showHUDMaybe(title: "リクエスト中", subTitle: "flatMap内")
+        }
+        .flatMap {
+          Self.alertController.show(
+            title: "成功",
+            actions: [DoneAlertAction.done(nil)]
+          )
+        }
+        .asObservable()
+        .showAlertIfCatchError()
+        .justEmpty()
+      
     case .requestObject:
-      return apiService.requestObject()
-        .flatMap(storeService.add())
-        .trackActivity(hudService)
-        .showAlertIfCatchError(alertService)
+      return Self.apiClient.requestObject()
+        .flatMap(Self.store.add())
+        .showHUD()
+        .showAlertIfCatchError()
         .justEmpty() // 注釈
       /**
        # 注釈
@@ -117,11 +178,11 @@ final class TipsReactor: Reactor {
        */
       
     case .requestJSON:
-      return apiService.requestJSON()
-      .flatMap(storeService.add())
-      .trackActivity(hudService)
-      .showAlertIfCatchError(alertService)
-      .justEmpty()
+      return Self.apiClient.requestJSON()
+        .flatMap(Self.store.add())
+        .showHUD()
+        .showAlertIfCatchError()
+        .justEmpty()
       
     case .upsertUser:
       return Observable.just(currentState.user)
@@ -134,26 +195,26 @@ final class TipsReactor: Reactor {
               addressNum: 1
             )
           )
-      )
+        )
         .map {
           $0.with {
             $0.snakeCaseKey = Int.random(in: 0...Int.max)
           }
-      }
-      .flatMap(storeService.add())
-      .showAlertIfCatchError(alertService)
-      .justEmpty()
-    case .deleteUser:      
-      return storeService.fetch(UserObject.self, forPrimaryKey: userID)
+        }
+        .flatMap(Self.store.add())
+        .showAlertIfCatchError()
+        .justEmpty()
+    case .deleteUser:
+      return Self.store.fetch(UserObject.self, forPrimaryKey: userID)
         .asObservable()
         .errorOnNil(
           AppError.failed(
             title: "削除できません",
             description: "user.id == \(userID)はデータベースに存在しません。"
           )
-      )
-        .flatMap(storeService.delete())
-        .showAlertIfCatchError(alertService)
+        )
+        .flatMap(Self.store.delete())
+        .showAlertIfCatchError()
         .justEmpty()
     case .convertResponseToModel:
       let response = UserResponse(
@@ -170,15 +231,15 @@ final class TipsReactor: Reactor {
             model.snakeCaseKey == response.snakeCaseKey,
             model.address.id == response.addressID,
             model.address.addressNum == response.addressNum
-            else {
-              throw AppError.failed(title: "変換できていません", description: "response: \(response), model: \(model)")
+          else {
+            throw AppError.failed(title: "変換できていません", description: "response: \(response), model: \(model)")
           }
           return true
-      }
-      .debug()
-      .showAlertIfCatchError(alertService)
-      .justEmpty()
-    }    
+        }
+        .debug()
+        .showAlertIfCatchError()
+        .justEmpty()
+    }
   }
   
   func transform(mutation: Observable<TipsReactor.Mutation>) -> Observable<TipsReactor.Mutation> {
@@ -188,21 +249,21 @@ final class TipsReactor: Reactor {
       mutation,
       
       // Realmに保存されているUserObjectが変更されたらイベントが流れます
-      storeService.fetch(UserObject.self)
+      Self.store.fetch(UserObject.self)
         .map { try $0.map { try $0.convert() } } // 注釈
         .map(Mutation.setObjects)
-        .showAlertIfCatchError(alertService),
+        .showAlertIfCatchError(),
       
-      storeService.fetch(UserObject.self)
+      Self.store.fetch(UserObject.self)
         .map { $0.filter { $0.id == userID } }
         .map { try $0.first?.convert() }
         .map(Mutation.setUser)
-        .showAlertIfCatchError(alertService)
+        .showAlertIfCatchError()
     )
     /**
      # 注釈
      - stateがそのままManaged UserObjectを直接参照してもいいのですが、
-     以下の理由によりUI側は変換コストがかかったとしてもStructなど普遍なオブジェクトを扱った方が設計として安全になります。
+     以下の理由によりUI側は変換コストがかかったとしてもStructなど不変なオブジェクトを扱った方が設計として安全になります。
      
      ## 変換理由
      1. RealmSwift.Objectは異なるThreadをまたげない

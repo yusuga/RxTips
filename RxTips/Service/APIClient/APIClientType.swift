@@ -9,12 +9,12 @@
 import Foundation
 import RxSwift
 
-protocol APIServiceType {
+protocol APIClientType {
   
   func request() -> Single<Void>
 }
 
-extension APIServiceType {
+extension APIClientType {
   
   func requestError() -> Single<Void> {
     return request()

@@ -69,13 +69,19 @@ private extension IndexPath {
     case 0:
       switch row {
       case 0: return .request
-      case 1: return .requestError
-      case 2: return .requestConfirmed
-      case 3: return .requestObject
-      case 4: return .requestJSON
-      case 5: return .upsertUser
-      case 6: return .deleteUser
-      case 7: return .convertResponseToModel
+      case 1: return .showNestedHUD
+      case 2: return .requestError
+      case 3: return .requestConfirmed
+      case 4: return .requestSelection
+      default: return nil
+      }
+    case 1:
+      switch row {
+      case 0: return .requestObject
+      case 1: return .requestJSON
+      case 2: return .upsertUser
+      case 3: return .deleteUser
+      case 4: return .convertResponseToModel
       default: return nil
       }
     default: return nil

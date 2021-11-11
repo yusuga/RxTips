@@ -1,5 +1,5 @@
 //
-//  Foundation+Tips.swift
+//  Foundation+App.swift
 //  RxTips
 //
 //  Created by Yu Sugawara on 2019/11/07.

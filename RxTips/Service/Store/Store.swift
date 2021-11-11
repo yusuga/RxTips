@@ -1,5 +1,5 @@
 //
-//  StoreService.swift
+//  Store.swift
 //  RxTips
 //
 //  Created by Yu Sugawara on 2019/11/07.
@@ -9,7 +9,7 @@
 import Foundation
 import RealmSwift
 
-final class StoreService {
+final class Store {
   
   private let configure: Realm.Configuration
   
@@ -18,7 +18,7 @@ final class StoreService {
   }
 }
 
-extension StoreService: StoreServiceType {
+extension Store: StoreType {
   
   func realm() throws -> Realm {
     return try Realm(configuration: configure)

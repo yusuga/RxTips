@@ -19,72 +19,41 @@ import RealmSwift
 /// アプリケーションクラスを構築するにあたっては、両者ともだいたい同じようなものだが、私は Service Locator のほうが少し優勢だと思う。こちらのほうが振る舞いが素直だからだ。しかしながら、構築したクラスが複数のアプリケーションで利用されるのであれば、Dependency Injection のほうがより良い選択肢となる。
 /// ```
 /// 引用元: https://kakutani.com/trans/fowler/injection.html
-private struct ServiceContainer: ServiceContainerType {
+struct ServiceContainer {
   
   let navigator: NavigatorType
-  let alertService: AlertServiceType
-  let hudService: HUDServiceType
-  let apiService: APIServiceType
-  let storeService: StoreServiceType
+  let alertController: AlertControllerType
+  let hudController: HUDControllerType
+  let apiClient: APIClientType
+  let store: StoreType
 }
 
-/// この初期化方法とどこでretainするかは改良の余地がある
-/// アプリの生存期間中に解放したい場合以外はこれくらいでいいかなと思う
-private let serviceContainer: ServiceContainer = {
-  let navigator = Navigator()
-  let config = Realm.Configuration(
-    deleteRealmIfMigrationNeeded: true
-  )
-  
-  return ServiceContainer(
-    navigator: navigator,
-    alertService: AlertService(dependency: .init(navigator: navigator)),
-    hudService: HUDService(),
-    apiService: APIService(),
-    storeService: StoreService(configure: config)
-  )
-}()
+/// この初期化方法とどこでretainするかは改良の余地がある。
+/// アプリの生存期間中に解放しないのであれば `private let` でいいと思う。
+private let serviceContainer = ServiceContainer(
+    navigator: Navigator(),
+    alertController: AlertController(),
+    hudController: HUDController(),
+    apiClient: APIClient(),
+    store: Store(
+      configure: Realm.Configuration(
+        deleteRealmIfMigrationNeeded: true
+      )
+    )
+)
 
-extension Reactor {
+extension ServiceAvailable {
   
-  static var navigator: NavigatorType {
-    return serviceContainer.navigator
-    
-  }
-  
-  var navigator: NavigatorType {
-    return type(of: self).navigator
-  }
-  
-  static var alertService: AlertServiceType {
-    return serviceContainer.alertService
-  }
-  
-  var alertService: AlertServiceType {
-    return type(of: self).alertService
-  }
-  
-  static var hudService: HUDServiceType {
-    return serviceContainer.hudService
-  }
-  
-  var hudService: HUDServiceType {
-    return type(of: self).hudService
-  }
-  
-  static var apiService: APIServiceType {
-    return serviceContainer.apiService
-  }
-  
-  var apiService: APIServiceType {
-    return type(of: self).apiService
-  }
-  
-  static var storeService: StoreServiceType {
-    return serviceContainer.storeService
-  }
-  
-  var storeService: StoreServiceType {
-    return type(of: self).storeService
+  static subscript<T>(dynamicMember keyPath: KeyPath<ServiceContainer, T>) -> T {
+    serviceContainer[keyPath: keyPath]
   }
 }
+
+/// Serviceは必要な箇所からのみアクセスできるように制限する
+/// - Note: Viewからはアクセス可能にはしないこと（Exampleは除く）
+typealias Reactor = ReactorKit.Reactor & ServiceAvailable
+extension Reactive: ServiceAvailable {}
+extension Observable: ServiceAvailable {}
+extension PrimitiveSequence: ServiceAvailable {}
+extension AlertController: ServiceAvailable {}
+extension APIRequestType: ServiceAvailable {}
